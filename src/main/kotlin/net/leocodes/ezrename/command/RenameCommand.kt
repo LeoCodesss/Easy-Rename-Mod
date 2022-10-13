@@ -1,7 +1,9 @@
 package net.leocodes.ezrename.command
 
+import com.mojang.brigadier.Command
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.StringArgumentType
+import com.mojang.brigadier.builder.LiteralArgumentBuilder
 import com.mojang.brigadier.context.CommandContext
 import com.mojang.brigadier.exceptions.CommandSyntaxException
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
@@ -11,13 +13,14 @@ import net.minecraft.entity.LivingEntity
 import net.minecraft.server.command.CommandManager
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 
 object RenameCommand {
-    private val FAILED_ENTITY_EXCEPTION = SimpleCommandExceptionType(Text.translatable("commands.rename.failed.entity"))
+    private val FAILED_ENTITY_EXCEPTION = SimpleCommandExceptionType(TranslatableText("commands.rename.failed.entity"))
 
-    private val FAILED_ITEMLESS_EXCEPTION = SimpleCommandExceptionType(Text.translatable("commands.rename.failed.itemless"))
+    private val FAILED_ITEMLESS_EXCEPTION = SimpleCommandExceptionType(TranslatableText("commands.rename.failed.itemless"))
 
-    fun register(dispatcher: CommandDispatcher<ServerCommandSource>) {
+    fun register(dispatcher: CommandDispatcher<ServerCommandSource?>) {
         dispatcher.register(
             CommandManager.literal("rename").then(
                 CommandManager.argument("targets", EntityArgumentType.entities()).then(
