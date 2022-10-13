@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "ezrename",
+  "version": "${version}",
+
+  "name": "Easy Rename",
+  "description": "Rename items with ease",
+  "authors": [
+    "LeoCodes"
+  ],
+
+  "license": "MIT",
+  "icon": "assets/ezrename/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "net.leocodes.ezrename.EasyRenameMod"
+      }
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.8.7",
+    "fabric": "*",
+    "fabric-language-kotlin": ">=1.8.4+kotlin.1.7.20",
+    "minecraft": "1.19.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
